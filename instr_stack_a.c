@@ -53,6 +53,21 @@ void	ft_rotate(t_list **stack)
 	last->next = first;
 }
 
+// einfacher
+void	ft_rotate(t_list **stack)
+{
+	t_list	*first;
+	t_list	*last;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+		return ;
+	first = *stack;                 // Speichert den aktuellen ersten Knoten
+	*stack = first->next;           // Setzt den Kopf der Liste auf das zweite Element
+	first->next = NULL;             // Trennt den ursprünglichen ersten Knoten vom Rest der Liste
+	last = ft_lstlast(*stack);      // Findet den letzten Knoten in der Liste
+	last->next = first;             // Hängt den ursprünglichen ersten Knoten ans Ende der Liste
+}
+
 void	ft_reverserotate(t_list **stack)
 {
 	t_list	*iter;
