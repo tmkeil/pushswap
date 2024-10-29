@@ -6,75 +6,64 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 22:01:46 by tkeil             #+#    #+#             */
-/*   Updated: 2024/10/29 19:22:47 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/10/29 20:05:36 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_list **stack_a)
+void	ft_swap(t_list **stack)
 {
 	t_list	*first;
 	t_list	*second;
 
-	if (!stack_a || !*stack_a || !(*stack_a)->next)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	first = (*stack_a);
-	second = (*stack_a)->next;
+	first = (*stack);
+	second = (*stack)->next;
 	first->next = second->next;
 	second->next = first;
-	*stack_a = second;
+	*stack = second;
 }
 
-void	ft_pb(t_list **stack_a, t_list **stack_b)
+void	ft_push(t_list **stack_from, t_list **stack_to)
 {
 	t_list	*tmp;
 
-	if (!stack_a || !*stack_a || !stack_b)
+	if (!stack_from || !*stack_from || !stack_to)
 		return ;
-	tmp = (*stack_a);
-	(*stack_a) = (*stack_a)->next;
-	ft_lstadd_front(stack_b, tmp);
+	tmp = (*stack_from);
+	(*stack_from) = (*stack_from)->next;
+	ft_lstadd_front(stack_to, tmp);
 }
 
-void	ft_ra(t_list **stack_a)
+void	ft_rotate(t_list **stack)
 {
 	t_list	*first;
-	t_list	*second;
-
-	if (!stack_a || !(*stack_a) || !(*stack_a)->next)
-		return ;
-	first = *stack_a;
-	second = (*stack_a)->next;
-	*stack_a = first->next;
-	first->next = NULL;
-	while (second->next)
-		second = second->next;
-	second->next = first;
-}
-
-void	ft_rra(t_list *stack_a)
-{
-	t_list	*tmp;
 	t_list	*last;
 
-	if (!stack_a || stack_a->next)
+	if (!stack || !(*stack) || !(*stack)->next)
 		return ;
-	tmp = stack_a;
-	last = ft_lstlast(stack_a);
-	if (!last)
-		return ;
-	stack_a->content = last->content;
-	stack_a = stack_a->next;
-	while (stack_a)
+	first = *stack;
+	*stack = first->next;
+	first->next = NULL;
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->next = first;
+}
+
+void	ft_reverserotate(t_list **stack)
+{
+	t_list	*first;
+	t_list	*last;
+
+	if (!stack || !*stack || !(*stack)->next)
 	{
-		if (stack_a->next == NULL)
-		{
-			stack_a->content = tmp->content;
-			return ;
-		}
-		tmp = stack_a;
-		stack_a = stack_a->next;
-		stack_a->content = tmp->content;
+		/* code */
 	}
+	
+	last = ft_lstlast(*stack);
+	*stack = last;
+	
 }

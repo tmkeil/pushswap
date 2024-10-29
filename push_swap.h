@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/10/29 17:32:50 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/10/29 20:05:59 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
-
-void	ft_sa(t_list **stack_a);
-void	ft_pb(t_list **stack_a, t_list **stack_b);
-void	ft_ra(t_list **stack_a);
+void	ft_swap(t_list **stack);
+void	ft_push(t_list **stack_from, t_list **stack_to);
+void	ft_rotate(t_list **stack);
+void	ft_reverserotate(t_list **stack);
 
 #endif
