@@ -79,11 +79,8 @@ void	ft_reverserotate(t_list **stack)
 	iter = *stack;
 	last = ft_lstlast(*stack);
 	last->next = *stack;
-	while (iter->next->next)
-	{
-		iter->next = iter;
-		iter = iter->next;
-	}
-	iter->next = NULL;
 	*stack = last;
+	while (iter->next->next)
+		iter = iter->next;
+	iter->next = NULL;
 }
