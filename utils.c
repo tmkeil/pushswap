@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:47:58 by tkeil             #+#    #+#             */
-/*   Updated: 2024/10/29 18:56:07 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/10/29 21:56:49 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,10 +145,10 @@ int	main(void)
 	ft_lstadd_back(&a, ft_lstnew("node 2"));
 	ft_lstadd_back(&a, ft_lstnew("node 3"));
 	ft_lstadd_back(&a, ft_lstnew("node 4"));
+	// swap testing
 	ft_lstiter(a, f);
-	ft_sa(&a);
-	printf("\n");
-	ft_lstiter(a, f);
+	// ft_swap(&a);
+	// ft_lstiter(a, f);
 
 	// pb testing
 	// printf("vor pb\n");
@@ -167,13 +167,19 @@ int	main(void)
 	// ft_lstiter(a, f);
 
 	// ra testing
-	ft_ra(&a);
+	// ft_rotate(&a);
+	// printf("\n");
+	// printf("after ra\n");
+	// ft_lstiter(a, f);
+	// ft_rotate(&a);
+	// printf("\n");
+	// printf("after ra\n");
+	// ft_lstiter(a, f);
+
+	// rra testing
+	ft_reverserotate(&a);
 	printf("\n");
-	printf("after ra\n");
-	ft_lstiter(a, f);
-		ft_ra(&a);
-	printf("\n");
-	printf("after ra\n");
+	printf("after rra\n");
 	ft_lstiter(a, f);
 	return (0);
 }

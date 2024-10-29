@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 22:01:46 by tkeil             #+#    #+#             */
-/*   Updated: 2024/10/29 20:05:36 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/10/29 22:27:14 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,20 @@ void	ft_rotate(t_list **stack)
 
 void	ft_reverserotate(t_list **stack)
 {
-	t_list	*first;
+	t_list	*iter;
 	t_list	*last;
+	t_list	*second_last;
 
 	if (!stack || !*stack || !(*stack)->next)
-	{
-		/* code */
-	}
-	
+		return ;
+	iter = *stack;
 	last = ft_lstlast(*stack);
+	last->next = *stack;
+	while (iter->next->next)
+	{
+		iter->next = iter;
+		iter = iter->next;
+	}
+	iter->next = NULL;
 	*stack = last;
-	
 }
