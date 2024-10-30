@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 22:01:46 by tkeil             #+#    #+#             */
-/*   Updated: 2024/10/29 22:27:14 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:31 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,40 +47,26 @@ void	ft_rotate(t_list **stack)
 	first = *stack;
 	*stack = first->next;
 	first->next = NULL;
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	last->next = first;
-}
-
-// einfacher
-void	ft_rotate(t_list **stack)
-{
-	t_list	*first;
-	t_list	*last;
-
-	if (!stack || !(*stack) || !(*stack)->next)
+	last = ft_lstlast(*stack);
+	if (!last)
 		return ;
-	first = *stack;                 // Speichert den aktuellen ersten Knoten
-	*stack = first->next;           // Setzt den Kopf der Liste auf das zweite Element
-	first->next = NULL;             // Trennt den ursprünglichen ersten Knoten vom Rest der Liste
-	last = ft_lstlast(*stack);      // Findet den letzten Knoten in der Liste
-	last->next = first;             // Hängt den ursprünglichen ersten Knoten ans Ende der Liste
+	last->next = first;
 }
 
 void	ft_reverserotate(t_list **stack)
 {
-	t_list	*iter;
 	t_list	*last;
 	t_list	*second_last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	iter = *stack;
 	last = ft_lstlast(*stack);
+	if (!last)
+		return ;
+	second_last = *stack;
+	while (second_last->next && second_last->next->next)
+		second_last = second_last->next;
+	second_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
-	while (iter->next->next)
-		iter = iter->next;
-	iter->next = NULL;
 }
