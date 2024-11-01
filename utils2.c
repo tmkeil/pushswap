@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:52:41 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/01 18:47:01 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/01 22:44:56 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ int	ft_rulecheck(char **ptr)
 	i = 0;
 	while (ptr[i])
 	{
+		printf("hallo %s\n", ptr[i]);
 		if (!ft_atoi(ptr[i]))
+		{
+			printf("hallo %s\n", ptr[i]);
+			printf("anders\n");
 			return (0);
+		}
+			
 		i++;
 	}
 	i = 0;
@@ -31,7 +37,11 @@ int	ft_rulecheck(char **ptr)
 		while (ptr[j])
 		{
 			if (ft_atoi(ptr[i]) == ft_atoi(ptr[j]))
+			{
+				printf("2 gleiche\n");
 				return (0);
+			}
+				
 			j++;
 		}
 		i++;
@@ -59,7 +69,7 @@ int	ft_preparation(char *ptr, t_list **stack)
 		tmp = ft_lstnew((void *)ft_strdup(str[i++]));
 		if (!tmp)
 			return (ft_ptrclr(str, del), ft_lstclear(stack, del), 0);
-		ft_lstadd_front(stack, tmp);
+		ft_lstadd_back(stack, tmp);
 	}
 	return (ft_ptrclr(str, del), 1);
 }

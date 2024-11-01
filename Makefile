@@ -6,7 +6,6 @@ all: test
 
 test:
 	$(CC) $(CFLAGS) *.c libft/*.c
-	./a.out input.txt
 
 fill:
 	$(CC) $(CFLAGS) fill/fill.c libft/*.c

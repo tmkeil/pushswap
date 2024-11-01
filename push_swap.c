@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:43:13 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/01 21:06:42 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/01 22:48:50 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,11 @@ int	operate_a(t_list **stack_a, t_list **stack_b)
 	val = 0;
 	if (f > s)
 		val = ft_swap(stack_a, "sa");
-	else if (l < f)
+	else if (l < f && s > f)
 		val = ft_reverserotate(stack_a, "rra");
 	else if (f < s && l > f)
 		val = ft_push(stack_a, stack_b, "pb");
-	else
+	else if (f > l && s < f)
 		val = ft_rotate(stack_a, "ra");
 	return (val);
 }
@@ -138,11 +138,11 @@ int	operate_b(t_list **stack_a, t_list **stack_b)
 	val = 0;
 	if (f < s)
 		val = ft_swap(stack_b, "sb");
-	else if (l > f)
+	else if (l > f && s < f)
 		val = ft_reverserotate(stack_b, "rrb");
 	else if (f > s && l < f)
 		val = ft_push(stack_b, stack_a, "pa");
-	else
+	else if (f < l && s > f)
 		val = ft_rotate(stack_b, "rb");
 	return (val);
 }
@@ -150,19 +150,30 @@ int	operate_b(t_list **stack_a, t_list **stack_b)
 int	pushswap(t_list **stack_a, t_list **stack_b)
 {
 	int	val;
+	int	t;
 
 	val = 0;
+	t = 0;
 	while (!ft_sorted_asc(*stack_a) || ft_lstsize(*stack_b) != 0)
 	{
-		val += operate_a(stack_a, stack_b);
-		val += operate_b(stack_a, stack_b);
-		printf("test\n");
+		t = operate_a(stack_a, stack_b);
+		val += t;
+		while (t && !ft_sorted_asc(*stack_a))
+		{
+			t = operate_a(stack_a, stack_b);
+			val += t;
+		}
+		t = operate_b(stack_a, stack_b);
+		val += t;
+		while (t && !ft_sorted_des(*stack_b))
+		{
+			t = operate_b(stack_a, stack_b);
+			val += t;
+		}
 		if (ft_sorted_asc(*stack_a) && ft_sorted_des(*stack_b) && ft_atoi((char *)(*stack_b)->content) < ft_atoi((char *)(*stack_a)->content))
 		{
 			while (ft_lstsize(*stack_b))
-			{
 				val += ft_push(stack_b, stack_a, "pa");
-			}
 		}
 	}
 	return (val);
