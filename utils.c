@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:00:03 by tkeil             #+#    #+#             */
-/*   Updated: 2024/10/31 19:35:23 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/01 18:49:04 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	del(void *content)
 
 void	f(void *content)
 {
-	printf("%s\n", (char *)content);
+	ft_putendl_fd((char *) content, 1);
 }
 
 void	ft_er(void)
 {
-	write(1, "Error", 5);
+	write(1, "Error\n", 6);
 }
 
 void	ft_ptrclr(char **ptr, void (*del)(void*))
