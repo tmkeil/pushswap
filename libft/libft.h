@@ -16,7 +16,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "getnextline/get_next_line.h"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
