@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 15:12:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/01 19:28:08 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/01 20:59:28 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 	bool	exists;
 	size_t	count;
 
-	count = 3;
+	count = 50;
 	int numbers[count];
 	lower = 1;
 	upper = 100;

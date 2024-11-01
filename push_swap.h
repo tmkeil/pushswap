@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/01 17:44:48 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/01 19:53:09 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # include <fcntl.h>
 
 // push swap
-void	ft_swap(t_list **stack, char *text);
-void	ft_push(t_list **stack_from, t_list **stack_to, char *text);
-void	ft_rotate(t_list **stack, char *text);
-void	ft_reverserotate(t_list **stack, char *text);
+int	ft_swap(t_list **stack, char *text);
+int	ft_push(t_list **stack_from, t_list **stack_to, char *text);
+int	ft_rotate(t_list **stack, char *text);
+int	ft_reverserotate(t_list **stack, char *text);
 
 // utils
 void	del(void *content);
