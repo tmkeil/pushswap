@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:41:15 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 13:00:47 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:28:26 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,23 @@ static void	ft_sort(int *arr, int size, int (*f)(int, int))
 	}
 }
 
-int	ft_pivot_down(t_list **stack)
+int	ft_pivot(t_stack *stack)
 {
-	int		lower_pivot;
+	int		pivot;
 	int		size;
 	int		*values;
-	t_list	*current;
 	int		i;
 
 	i = 0;
-	size = ft_lstsize(*stack);
+	size = ft_lstsize_stknode(stack);
 	values = malloc(size * sizeof(int));
-	current = *stack;
 	while (i < size)
 	{
-		values[i++] = ft_atoi((char *)current->content);
-		current = current->next;
+		values[i++] = stack->val;
+		stack = stack->next;
 	}
 	ft_sort(values, size, ft_compare);
-	lower_pivot = values[size / 4];
+	pivot = values[(int)(PIVOT_POINT * size)];
 	free(values);
-	return (lower_pivot);
+	return (pivot);
 }
