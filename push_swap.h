@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 21:16:06 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 21:22:47 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
 int					ft_getmoves(t_stack *stk);
 int					ft_rate(t_stack *stk, int pivot, int size, bool back);
+void				ft_push_best(t_stack **from, t_stack **to, int size);
 #endif
