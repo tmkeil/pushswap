@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 19:14:00 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 21:16:06 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,27 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdbool.h>
 
 # define PIVOT_POINT 0.66
 # define PIVOT_END_POINT 0.1
+# define SA "sa"
+# define RA "ra"
+# define RRA "rra"
+# define PB "pb"
+
+# define SB "sb"
+# define RB "rb"
+# define RRB "rrb"
+# define PA "pa"
 
 // typedef
 typedef struct s_stack
 {
 	int				val;
+	int				moves;
 	struct s_stack	*next;
+	struct s_stack	*pair;
 }					t_stack;
 
 // operations
@@ -48,7 +60,7 @@ int					ft_preparation(int argc, char **argv, t_stack **stack);
 int					ft_sorted(t_stack *stack);
 
 // pivots
-int					ft_pivot(t_stack *stack);
+int					ft_getpivot(t_stack *stack, int idx, int size);
 int					ft_convertpivot(t_stack *stk, int size, int n);
 
 // lstutils
@@ -63,4 +75,6 @@ void				ft_lstclear_stknode(t_stack **lst);
 // sorting
 void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
+int					ft_getmoves(t_stack *stk);
+int					ft_rate(t_stack *stk, int pivot, int size, bool back);
 #endif

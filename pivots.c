@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:41:15 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 19:10:30 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 19:44:04 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,13 @@ static void	ft_sort(int *arr, int size, int (*f)(int, int))
 	}
 }
 
-int	ft_pivot(t_stack *stack)
+int	ft_getpivot(t_stack *stack, int idx, int size)
 {
 	int		pivot;
-	int		size;
 	int		*values;
 	int		i;
 
 	i = 0;
-	size = ft_lstsize_stknode(stack);
 	values = malloc(size * sizeof(int));
 	while (i < size)
 	{
@@ -61,19 +59,18 @@ int	ft_pivot(t_stack *stack)
 		stack = stack->next;
 	}
 	ft_sort(values, size, ft_compare);
-	pivot = values[(int)(PIVOT_POINT * size)];
-	free(values);
-	return (pivot);
+	pivot = values[idx];
+	return (free(values), pivot);
 }
 
 int	ft_convertpivot(t_stack *stk, int size, int n)
 {
 	float	m;
 	float	x;
-	int		pivot;
+	int		pivot_idx;
 
 	m = ((PIVOT_END_POINT - PIVOT_POINT) / (size - 3));
 	x = (size - n - 3);
-	pivot = (int)(PIVOT_POINT + m * x);
-	return (pivot);
+	pivot_idx = (int)(size * (PIVOT_POINT + m * x));
+	return (ft_getpivot(stk, pivot_idx, size));
 }
