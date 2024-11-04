@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 17:25:41 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 19:14:00 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define PIVOT_POINT 0.67
+# define PIVOT_POINT 0.66
+# define PIVOT_END_POINT 0.1
 
 // typedef
 typedef struct s_stack
@@ -48,6 +49,7 @@ int					ft_sorted(t_stack *stack);
 
 // pivots
 int					ft_pivot(t_stack *stack);
+int					ft_convertpivot(t_stack *stk, int size, int n);
 
 // lstutils
 t_stack				*ft_lstlast_stknode(t_stack *lst);
@@ -59,5 +61,6 @@ void				ft_lstiter_stknode(t_stack *lst, void (*f)(int));
 void				ft_lstclear_stknode(t_stack **lst);
 
 // sorting
+void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:41:15 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 15:28:26 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 19:10:30 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,17 @@ int	ft_pivot(t_stack *stack)
 	ft_sort(values, size, ft_compare);
 	pivot = values[(int)(PIVOT_POINT * size)];
 	free(values);
+	return (pivot);
+}
+
+int	ft_convertpivot(t_stack *stk, int size, int n)
+{
+	float	m;
+	float	x;
+	int		pivot;
+
+	m = ((PIVOT_END_POINT - PIVOT_POINT) / (size - 3));
+	x = (size - n - 3);
+	pivot = (int)(PIVOT_POINT + m * x);
 	return (pivot);
 }
