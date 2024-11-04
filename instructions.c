@@ -6,16 +6,16 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 22:01:46 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/01 19:59:21 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:17:25 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_swap(t_list **stack, char *text)
+int	ft_swap(t_stack **stack, char *text)
 {
-	t_list	*first;
-	t_list	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (0);
@@ -28,48 +28,48 @@ int	ft_swap(t_list **stack, char *text)
 	return (1);
 }
 
-int	ft_push(t_list **stack_from, t_list **stack_to, char *text)
+int	ft_push(t_stack **from, t_stack **to, char *text)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
-	if (!stack_from || !*stack_from || !stack_to)
+	if (!from || !*from || !to)
 		return (0);
-	tmp = (*stack_from);
-	if ((*stack_from)->next)
-		(*stack_from) = (*stack_from)->next;
+	tmp = (*from);
+	if ((*from)->next)
+		(*from) = (*from)->next;
 	else
-		*stack_from = NULL;
-	ft_lstadd_front(stack_to, tmp);
+		*from = NULL;
+	ft_lstadd_front(to, tmp);
 	ft_putendl_fd(text, 1);
 	return (1);
 }
 
-int	ft_rotate(t_list **stack, char *text)
+int	ft_rotate(t_stack **stack, char *text)
 {
-	t_list	*first;
-	t_list	*last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack || !(*stack) || !(*stack)->next)
+		return (0);
+	last = ft_lstlast_stknode(*stack);
+	if (!last)
 		return (0);
 	first = *stack;
 	*stack = first->next;
 	first->next = NULL;
-	last = ft_lstlast(*stack);
-	if (!last)
-		return (0);
 	last->next = first;
 	ft_putendl_fd(text, 1);
 	return (1);
 }
 
-int	ft_reverserotate(t_list **stack, char *text)
+int	ft_reverserotate(t_stack **stack, char *text)
 {
-	t_list	*last;
-	t_list	*second_last;
+	t_stack	*last;
+	t_stack	*second_last;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return (0);
-	last = ft_lstlast(*stack);
+	last = ft_lstlast_stknode(*stack);
 	if (!last)
 		return (0);
 	second_last = *stack;
