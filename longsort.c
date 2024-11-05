@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 21:01:29 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 22:11:06 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ void	ft_longsort(t_stack **stk_a, t_stack **stk_b)
 	// printf("\n\na short sorted:\n");
 	// ft_lstiter_stknode(*stk_a, f);
 	ft_returnchunks(stk_a, stk_b, size_curr, size_start - size_curr);
-	// printf("\nafter returning\nstack a:\n");
-	// ft_lstiter_stknode(*stk_a, f);
-	// printf("\nstack b:\n");
-	// ft_lstiter_stknode(*stk_b, f);
+	printf("\nafter returning\nstack a:\n");
+	ft_lstiter_stknode(*stk_a, f);
+	printf("\nstack b:\n");
+	ft_lstiter_stknode(*stk_b, f);
 	// printf("after returning\n");
 	ft_finalsort(stk_a, size_start);
 }

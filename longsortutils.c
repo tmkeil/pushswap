@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:14:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 21:48:53 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 22:08:26 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,21 +118,22 @@ void	ft_pushbest(t_stack **a, t_stack **b, int lenb, int d)
 
 void	ft_pairs(t_stack *stk_a, t_stack *stk_b)
 {
+	// fehler ist hier.
+	// wenn nur noch eine Zahl in b ist, ist diese auch die groesste in b.
+	// verbesserung:
+	// high == stk_b->val ersetzen durch: wenn in a keine groessere ist, dann die kleinste ansonsten nicht.
 	int		val;
-	int		high;
 	t_stack	*tmp;
 
-	high = ft_lstextreme(stk_b, 1)->val;
 	while (stk_b)
 	{
 		tmp = stk_a;
 		val = tmp->val;
 		while (tmp)
 		{
-			if (high == stk_b->val)
+			if (ft_lstextreme(stk_a, 1)->val <= stk_b->val)
 			{
 				stk_b->pair = ft_lstextreme(stk_a, 0);
-				// stk_b->moves += stk_b->pair->moves;
 				break ;
 			}
 			else if (tmp->val <= val && tmp->val > stk_b->val)
