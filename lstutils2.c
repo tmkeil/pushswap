@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:46:29 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 18:45:22 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 20:52:50 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_lstiter_stknode(t_stack *lst, void (*f)(t_stack *))
 		return ;
 	while (lst)
 	{
+		// printf("abc\n");
 		(*f)(lst);
 		lst = lst->next;
 	}
@@ -55,6 +56,7 @@ t_stack	*ft_lstfindfastest(t_stack *stk)
 	if (!stk || !stk->pair)
 		return (NULL);
 	moves = stk->moves + stk->pair->moves;
+	fastest = stk;
 	while (stk)
 	{
 		val = stk->moves + stk->pair->moves;
@@ -72,7 +74,6 @@ t_stack	*ft_lstextreme(t_stack *stk, int hilo)
 {
 	int		val;
 	t_stack	*extreme;
-	printf("test\n");
 
 	val = stk->val;
 	extreme = stk;
@@ -90,6 +91,5 @@ t_stack	*ft_lstextreme(t_stack *stk, int hilo)
 		}
 		stk = stk->next;
 	}
-	printf("kleinster: %i\n", extreme->val);
 	return (extreme);
 }
