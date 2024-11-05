@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 21:22:47 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 17:12:25 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define PUSH_SWAP_H
 # include "libft/libft.h"
 # include <fcntl.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <stdbool.h>
 
 # define PIVOT_POINT 0.66
 # define PIVOT_END_POINT 0.1
@@ -48,7 +48,7 @@ void				ft_reverserotate(t_stack **stack, char *text);
 
 // termination utils
 void				del(void *content);
-void				f(int val);
+void				f(t_stack *stk);
 void				ft_er(void);
 long				ft_atol(char *s);
 char				*ft_itoa_node(int val);
@@ -69,13 +69,17 @@ t_stack				*ft_lstnew_stknode(int val);
 void				ft_lstadd_back_stknode(t_stack **lst, t_stack *node);
 void				ft_lstadd_front_stknode(t_stack **lst, t_stack *node);
 int					ft_lstsize_stknode(t_stack *lst);
-void				ft_lstiter_stknode(t_stack *lst, void (*f)(int));
+void				ft_lstiter_stknode(t_stack *lst, void (*f)(t_stack *));
 void				ft_lstclear_stknode(t_stack **lst);
+t_stack				*ft_lstfindfastest(t_stack *stk);
+t_stack				*ft_lstextreme(t_stack *stk, int hilo);
 
 // sorting
 void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
-int					ft_getmoves(t_stack *stk);
+int					ft_getmoves(t_stack *stk, t_stack *fastest);
 int					ft_rate(t_stack *stk, int pivot, int size, bool back);
-void				ft_push_best(t_stack **from, t_stack **to, int size);
+void				ft_pushbest(t_stack **from, t_stack **to, int size, int d);
+void				ft_align(t_stack **stk, int size, t_stack *fastest);
+void				ft_pairs(t_stack *stk_a, t_stack *stk_b);
 #endif

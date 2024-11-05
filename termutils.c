@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:00:03 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 16:52:42 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 18:04:02 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	del(void *content)
 	free(content);
 }
 
-void	f(int val)
+void	f(t_stack *stk)
 {
-	ft_putendl_fd(ft_itoa_node(val), 1);
+	ft_putendl_fd(ft_itoa_node(stk->val), 1);
+	// printf("cost: %i\n", stk->moves);
 }
 
 void	ft_er(void)

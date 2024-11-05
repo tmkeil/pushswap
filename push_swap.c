@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:43:13 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 17:21:19 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 18:15:58 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ int	main(int argc, char *argv[])
 		return (ft_er(), 1);
 	if (!ft_preparation(argc, argv, &stack_a))
 		return (1);
-	printf("unsorted lst a:\n");
-	ft_lstiter_stknode(stack_a, f);
-
+	// printf("unsorted lst a:\n");
+	// ft_lstiter_stknode(stack_a, f);
 	ft_pushswap(&stack_a, &stack_b);
-	printf("\nsorted lst a:\n");
-	ft_lstiter_stknode(stack_a, f);
-	printf("pivot: %i\n", ft_pivot(stack_a));
+	// printf("\nsorted lst a:\n");
+	// ft_lstiter_stknode(stack_a, f);
+	// printf("pivot: %i\n", ft_pivot(stack_a));
 	ft_lstclear_stknode(&stack_a);
 	return (0);
 }
