@@ -69,6 +69,10 @@ int	ft_convertpivot(t_stack *stk, int size, int n)
 	float	x;
 	int		pivot_idx;
 
+	// korrekt:
+	// double m = (double)(PIVOT_END_POINT - PIVOT_POINT) / (size - 3);
+	// pivot_idx = (int)(PIVOT_POINT + m * (size - n));
+	
 	m = ((PIVOT_END_POINT - PIVOT_POINT) / (size - 3));
 	x = (size - n - 3);
 	pivot_idx = (int)(size * (PIVOT_POINT + m * x));
