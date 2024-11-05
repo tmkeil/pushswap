@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 22:11:06 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 22:15:55 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,16 @@ static void	ft_finalsort(t_stack **stk, int size)
 			if (tmp->val < val)
 				break ;
 			pos++;
+			tmp = tmp->next;
 		}
 	}
-	if (pos < (size / 2))
+	if (pos <= (size / 2))
 	{
 		while (pos--)
 			ft_rotate(stk, RA);
 		return ;
 	}
-	while (pos--)
+	while (size - pos++)
 		ft_reverserotate(stk, RRA);
 }
 
