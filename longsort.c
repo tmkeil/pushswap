@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 22:15:55 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 22:24:00 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static void	ft_returnchunks(t_stack **stk_a, t_stack **stk_b, int la, int lb)
 	while (ft_rate(*stk_b, 0, lb, false) && ft_rate(*stk_a, 0, la, false))
 	{
 		ft_pairs(*stk_a, *stk_b);
-		printf("\n\nstack b:\n");
-		ft_lstiter_stknode(*stk_b, f);
-		printf("stack a:\n");
-		ft_lstiter_stknode(*stk_a, f);
+		// printf("\n\nstack b:\n");
+		// ft_lstiter_stknode(*stk_b, f);
+		// printf("stack a:\n");
+		// ft_lstiter_stknode(*stk_a, f);
 		ft_pushbest(stk_a, stk_b, lb, 1);
 		la++;
 		lb--;
@@ -100,10 +100,10 @@ void	ft_longsort(t_stack **stk_a, t_stack **stk_b)
 	// printf("\n\na short sorted:\n");
 	// ft_lstiter_stknode(*stk_a, f);
 	ft_returnchunks(stk_a, stk_b, size_curr, size_start - size_curr);
-	printf("\nafter returning\nstack a:\n");
-	ft_lstiter_stknode(*stk_a, f);
-	printf("\nstack b:\n");
-	ft_lstiter_stknode(*stk_b, f);
+	// printf("\nafter returning\nstack a:\n");
+	// ft_lstiter_stknode(*stk_a, f);
+	// printf("\nstack b:\n");
+	// ft_lstiter_stknode(*stk_b, f);
 	// printf("after returning\n");
 	ft_finalsort(stk_a, size_start);
 }

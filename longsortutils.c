@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:14:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 22:08:26 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/05 22:19:24 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_align(t_stack **stk, int size, t_stack *fastest)
 	int	pos;
 
 	pos = ft_getmoves(*stk, fastest);
-	printf("pos = %i\nsize = %i\n", pos, size);
+	// printf("pos = %i\nsize = %i\n", pos, size);
 	if (pos <= size / 2)
 	{
 		while (pos--)
@@ -107,11 +107,11 @@ void	ft_pushbest(t_stack **a, t_stack **b, int lenb, int d)
 		stk = ft_lstfindfastest(*b);
 		ft_align(b, lenb, stk);
 		ft_align(a, lena, stk->pair);
-		printf("\n\nstack b nach ausrichtung:\n");
-		ft_lstiter_stknode(*b, f);
-		printf("stack a nach ausrichtung:\n");
-		ft_lstiter_stknode(*a, f);
-		printf("Operation:\n");
+		// printf("\n\nstack b nach ausrichtung:\n");
+		// ft_lstiter_stknode(*b, f);
+		// printf("stack a nach ausrichtung:\n");
+		// ft_lstiter_stknode(*a, f);
+		// printf("Operation:\n");
 		ft_push(b, a, PA);
 	}
 }
