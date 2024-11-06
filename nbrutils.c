@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:34:50 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 16:24:03 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:46:39 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ long	ft_atol(char *s)
 	size_t	i;
 	int		p;
 	long	val;
+	bool	valid;
 
 	i = 0;
 	p = 1;
 	val = 0;
+	valid = false;
 	while (s[i] && (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13)))
 		i++;
 	if (s[i] == '-' || s[i] == '+')
@@ -29,7 +31,12 @@ long	ft_atol(char *s)
 			p = -1;
 	}
 	while (s[i] >= '0' && s[i] <= '9')
+	{
+		valid = true;
 		val = val * 10 + (s[i++] - '0');
+	}
+	if (!valid)
+		return (LONG_MIN);
 	return (val * p);
 }
 
@@ -38,7 +45,7 @@ static int	ft_len(int val)
 	int	i;
 
 	i = 0;
-	if (val < 0)
+	if (val <= 0)
 	{
 		i++;
 		val = -val;

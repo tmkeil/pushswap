@@ -1,19 +1,26 @@
-CC = cc
-
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all: test
+NAME = push_swap
+SRCS = $(wildcard *.c libft/*.c)
+OBJS = $(SRCS:.c=.o)
 
-test:
-	$(CC) $(CFLAGS) *.c libft/*.c
+all: $(NAME)
 
-fill:
-	$(CC) $(CFLAGS) fill/fill.c libft/*.c
-	./a.out
+$(NAME): $(OBJS)
+	cp $< $(NAME)
+	$(CC) $(OBJS) -o $@
+	make clean
 
-fclean:
-	rm -f a.out libft/a.out
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: fill all test fclean
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+.PHONY: all clean fclean
 
 .SILENT:

@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:14:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 22:19:24 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/06 15:43:37 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	ft_rate(t_stack *stk, int pivot, int size, bool back)
 	exists = 0;
 	while (stk)
 	{
-		// printf("stack val von %i und pivot von %i\n", stk->val, pivot);
 		if (stk->val < pivot || !back)
 		{
-			// printf("war kleiner\n");
 			if (idx <= size / 2)
 				stk->moves = idx;
 			else if (idx > size / 2)
@@ -36,7 +34,6 @@ int	ft_rate(t_stack *stk, int pivot, int size, bool back)
 		idx++;
 		stk = stk->next;
 	}
-	// printf("exists = %i\n", exists);
 	return (exists);
 }
 
@@ -74,7 +71,6 @@ void	ft_align(t_stack **stk, int size, t_stack *fastest)
 	int	pos;
 
 	pos = ft_getmoves(*stk, fastest);
-	// printf("pos = %i\nsize = %i\n", pos, size);
 	if (pos <= size / 2)
 	{
 		while (pos--)
@@ -87,16 +83,13 @@ void	ft_align(t_stack **stk, int size, t_stack *fastest)
 	}
 }
 
-void	ft_pushbest(t_stack **a, t_stack **b, int lenb, int d)
+void	ft_pushbest(t_stack **a, t_stack **b, int lena, int d)
 {
-	int		lena;
+	int		lenb;
 	t_stack	*stk;
 
 	stk = NULL;
-	// printf("\nstack a nach align\n");
-	// ft_lstiter_stknode(*from, f);
-	// printf("%i wird in b gepusht\n", (*from)->val);
-	lena = ft_lstsize_stknode(*a);
+	lenb = ft_lstsize_stknode(*b);
 	if (d == 0)
 	{
 		ft_align(a, lena, stk);
@@ -107,28 +100,19 @@ void	ft_pushbest(t_stack **a, t_stack **b, int lenb, int d)
 		stk = ft_lstfindfastest(*b);
 		ft_align(b, lenb, stk);
 		ft_align(a, lena, stk->pair);
-		// printf("\n\nstack b nach ausrichtung:\n");
-		// ft_lstiter_stknode(*b, f);
-		// printf("stack a nach ausrichtung:\n");
-		// ft_lstiter_stknode(*a, f);
-		// printf("Operation:\n");
 		ft_push(b, a, PA);
 	}
 }
 
 void	ft_pairs(t_stack *stk_a, t_stack *stk_b)
 {
-	// fehler ist hier.
-	// wenn nur noch eine Zahl in b ist, ist diese auch die groesste in b.
-	// verbesserung:
-	// high == stk_b->val ersetzen durch: wenn in a keine groessere ist, dann die kleinste ansonsten nicht.
 	int		val;
 	t_stack	*tmp;
 
 	while (stk_b)
 	{
 		tmp = stk_a;
-		val = tmp->val;
+		val = INT_MAX;
 		while (tmp)
 		{
 			if (ft_lstextreme(stk_a, 1)->val <= stk_b->val)

@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 20:48:29 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:08:18 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define PIVOT_POINT 0.66
-# define PIVOT_END_POINT 0.1
+# define PIVOT_POINT 0.7
+# define PIVOT_END_POINT 0.5
 # define SA "sa"
 # define RA "ra"
 # define RRA "rra"
@@ -79,7 +79,7 @@ void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
 int					ft_getmoves(t_stack *stk, t_stack *fastest);
 int					ft_rate(t_stack *stk, int pivot, int size, bool back);
-void				ft_pushbest(t_stack **a, t_stack **b, int lenb, int d);
+void				ft_pushbest(t_stack **a, t_stack **b, int lena, int d);
 void				ft_align(t_stack **stk, int size, t_stack *fastest);
 void				ft_pairs(t_stack *stk_a, t_stack *stk_b);
 #endif

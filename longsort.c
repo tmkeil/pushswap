@@ -6,38 +6,31 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/05 22:24:00 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:16:12 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_movechunk(t_stack **stk_a, t_stack **stk_b, int pivot, int size)
+static void	ft_movechunk(t_stack **stk_a, t_stack **stk_b, int pivot, int la)
 {
-	while (ft_rate(*stk_a, pivot, size, true) && size > 3)
+	while (ft_rate(*stk_a, pivot, la, true) && la > 3)
 	{
-		ft_pushbest(stk_a, stk_b, size, 0);
+		ft_pushbest(stk_a, stk_b, la, 0);
 		if (!stk_b || !*stk_b)
 			return ;
 		if ((*stk_b)->next && (*stk_b)->val < (*stk_b)->next->val)
 			ft_rotate(stk_b, RB);
-		size--;
+		la--;
 	}
 }
 
 static void	ft_returnchunks(t_stack **stk_a, t_stack **stk_b, int la, int lb)
 {
-	// ft_rate(*stk_a, 0, la, false);
-	// ft_rate(*stk_b, 0, lb, false);
-
 	while (ft_rate(*stk_b, 0, lb, false) && ft_rate(*stk_a, 0, la, false))
 	{
 		ft_pairs(*stk_a, *stk_b);
-		// printf("\n\nstack b:\n");
-		// ft_lstiter_stknode(*stk_b, f);
-		// printf("stack a:\n");
-		// ft_lstiter_stknode(*stk_a, f);
-		ft_pushbest(stk_a, stk_b, lb, 1);
+		ft_pushbest(stk_a, stk_b, la, 1);
 		la++;
 		lb--;
 	}
@@ -85,23 +78,10 @@ void	ft_longsort(t_stack **stk_a, t_stack **stk_b)
 	while (size_curr > 3)
 	{
 		pivot = ft_convertpivot(*stk_a, size_start, size_curr);
-		// size_start -> size_curr
-		ft_movechunk(stk_a, stk_b, pivot, size_start);
+		ft_movechunk(stk_a, stk_b, pivot, size_curr);
 		size_curr = ft_lstsize_stknode(*stk_a);
-		// printf("\n\nchunk wurde gepusht.\nstack a:\n");
-		// ft_lstiter_stknode(*stk_a, f);
-		// printf("stack b:\n");
-		// ft_lstiter_stknode(*stk_b, f);
 	}
-	// printf("\n\n");
 	ft_shortsort(stk_a);
-	// printf("\n\na short sorted:\n");
-	// ft_lstiter_stknode(*stk_a, f);
 	ft_returnchunks(stk_a, stk_b, size_curr, size_start - size_curr);
-	// printf("\nafter returning\nstack a:\n");
-	// ft_lstiter_stknode(*stk_a, f);
-	// printf("\nstack b:\n");
-	// ft_lstiter_stknode(*stk_b, f);
-	// printf("after returning\n");
 	ft_finalsort(stk_a, size_start);
 }

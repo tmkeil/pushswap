@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   validutils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:52:41 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 16:24:20 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:48:30 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 int	ft_rulecheck(t_stack *lst)
 {
+	t_stack	*tmp;
 	size_t	i;
 
 	i = 0;
 	while (lst->next)
 	{
-		if (lst->val == lst->next->val)
-			return (0);
+		tmp = lst->next;
+		while (tmp)
+		{
+			if (lst->val == tmp->val)
+				return (0);
+			tmp = tmp->next;
+		}
 		lst = lst->next;
 	}
 	return (1);
@@ -43,9 +49,9 @@ int	ft_fill_values(char **str, t_stack **lst)
 	while (i < count)
 	{
 		val = ft_atol(str[i]);
-		if (val > INT_MAX || val < INT_MIN)
+		if (val > INT_MAX || val < INT_MIN || val == LONG_MIN)
 			return (free(values), 0);
-		values[i++] = val;
+		values[i++] = (int)val;
 	}
 	i = 0;
 	while (i < count)
