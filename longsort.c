@@ -27,12 +27,9 @@ static void	ft_movechunk(t_stack **stk_a, t_stack **stk_b, int pivot, int size)
 
 static void	ft_returnchunks(t_stack **stk_a, t_stack **stk_b, int la, int lb)
 {
-	ft_rate(*stk_a, 0, la, false);
-	ft_rate(*stk_b, 0, lb, false);
-	// printf("stack a:\n");
-	// ft_lstiter_stknode(*stk_a, f);
-	// printf("stack b:\n");
-	// ft_lstiter_stknode(*stk_b, f);
+	// ft_rate(*stk_a, 0, la, false);
+	// ft_rate(*stk_b, 0, lb, false);
+
 	while (ft_rate(*stk_b, 0, lb, false) && ft_rate(*stk_a, 0, la, false))
 	{
 		ft_pairs(*stk_a, *stk_b);
@@ -88,6 +85,7 @@ void	ft_longsort(t_stack **stk_a, t_stack **stk_b)
 	while (size_curr > 3)
 	{
 		pivot = ft_convertpivot(*stk_a, size_start, size_curr);
+		// size_start -> size_curr
 		ft_movechunk(stk_a, stk_b, pivot, size_start);
 		size_curr = ft_lstsize_stknode(*stk_a);
 		// printf("\n\nchunk wurde gepusht.\nstack a:\n");
