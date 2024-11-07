@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 20:00:03 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 16:29:57 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:07:37 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	f(t_stack *stk)
 
 void	ft_er(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 }
 
 void	ft_ptrclr(char **ptr, void (*del)(void *))

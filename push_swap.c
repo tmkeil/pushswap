@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:43:13 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 16:34:05 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:15:47 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void	ft_shortsort(t_stack **stack_a)
 {
-	int	f;
-	int	s;
-	int	l;
+	t_stack	*f;
+	t_stack	*s;
+	t_stack	*l;
 
+	f = *stack_a;
+	s = (*stack_a)->next;
+	l = ft_lstlast_stknode(*stack_a);
+	if (!stack_a || !*stack_a || !l)
+		return ;
 	if (ft_lstsize_stknode(*stack_a) < 2)
 		return ;
-	f = (*stack_a)->val;
-	s = (*stack_a)->next->val;
-	l = ft_lstlast_stknode(*stack_a)->val;
-	if (f > s && l > f)
+	if (f->val > s->val && l->val > f->val)
 		ft_swap(stack_a, "sa");
-	else if (f < s && f > l)
+	else if (f->val < s->val && f->val > l->val)
 		ft_reverserotate(stack_a, "rra");
 	else
 		ft_rotate(stack_a, "ra");
@@ -54,7 +56,7 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (ft_er(), 1);
 	if (!ft_preparation(argc, argv, &stack_a))
-		return (1);
+		return (ft_er(), 1);
 	ft_pushswap(&stack_a, &stack_b);
 	// printf("\n\nsorted lst a:\n");
 	// ft_lstiter_stknode(stack_a, f);

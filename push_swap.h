@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 16:08:18 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:14:13 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define RB "rb"
 # define RRB "rrb"
 # define PA "pa"
+
+# define SS "ss"
+# define RR "rr"
+# define RRR "rrr"
 
 // typedef
 typedef struct s_stack

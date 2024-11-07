@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:34:50 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 16:46:39 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:08:18 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long	ft_atol(char *s)
 		valid = true;
 		val = val * 10 + (s[i++] - '0');
 	}
-	if (!valid)
+	if (!valid || s[i] != '\0')
 		return (LONG_MIN);
 	return (val * p);
 }

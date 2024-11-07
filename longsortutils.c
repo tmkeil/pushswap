@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:14:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 15:43:37 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:38:58 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,36 @@ void	ft_align(t_stack **stk, int size, t_stack *fastest)
 	}
 }
 
+void	ft_align_em(t_stack **a, t_stack **b, int pos_a, int pos_b)
+{
+
+}
+
+// void	ft_align_em(t_stack **a, t_stack **b, )
 void	ft_pushbest(t_stack **a, t_stack **b, int lena, int d)
 {
-	int		lenb;
+	int		pos_a;
+	int		pos_b;
+	// int		lenb;
 	t_stack	*stk;
 
 	stk = NULL;
-	lenb = ft_lstsize_stknode(*b);
 	if (d == 0)
 	{
-		ft_align(a, lena, stk);
+		pos_a = ft_getmoves(*a, stk);
+		ft_align_em(a, NULL, pos_a, 0);
+		// ft_align(a, lena, stk);
 		ft_push(a, b, PB);
 	}
 	else if (d == 1)
 	{
+		// lenb = ft_lstsize_stknode(*b);
 		stk = ft_lstfindfastest(*b);
-		ft_align(b, lenb, stk);
-		ft_align(a, lena, stk->pair);
+		pos_a = ft_getmoves(*a, stk);
+		pos_b = ft_getmoves(*b, stk);
+		ft_align_em(a, b, pos_a, pos_b);
+		// ft_align(b, lenb, stk);
+		// ft_align(a, lena, stk->pair);
 		ft_push(b, a, PA);
 	}
 }
