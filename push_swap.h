@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/07 21:14:13 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 22:04:47 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void				ft_swap(t_stack **stack, char *text);
 void				ft_push(t_stack **from, t_stack **to, char *text);
 void				ft_rotate(t_stack **stack, char *text);
 void				ft_reverserotate(t_stack **stack, char *text);
+void				ft_swap_both(t_stack **a, t_stack **b);
+void				ft_rotate_both(t_stack **a, t_stack **b);
+void				ft_reverserotate_both(t_stack **a, t_stack **b);
 
 // termination utils
 void				del(void *content);
@@ -83,7 +86,6 @@ void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
 int					ft_getmoves(t_stack *stk, t_stack *fastest);
 int					ft_rate(t_stack *stk, int pivot, int size, bool back);
-void				ft_pushbest(t_stack **a, t_stack **b, int lena, int d);
-void				ft_align(t_stack **stk, int size, t_stack *fastest);
+void				ft_pushbest(t_stack **a, t_stack **b, int d);
 void				ft_pairs(t_stack *stk_a, t_stack *stk_b);
 #endif

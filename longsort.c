@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 16:16:12 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 22:05:17 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_movechunk(t_stack **stk_a, t_stack **stk_b, int pivot, int la)
 {
 	while (ft_rate(*stk_a, pivot, la, true) && la > 3)
 	{
-		ft_pushbest(stk_a, stk_b, la, 0);
+		ft_pushbest(stk_a, stk_b, 0);
 		if (!stk_b || !*stk_b)
 			return ;
 		if ((*stk_b)->next && (*stk_b)->val < (*stk_b)->next->val)
@@ -30,7 +30,7 @@ static void	ft_returnchunks(t_stack **stk_a, t_stack **stk_b, int la, int lb)
 	while (ft_rate(*stk_b, 0, lb, false) && ft_rate(*stk_a, 0, la, false))
 	{
 		ft_pairs(*stk_a, *stk_b);
-		ft_pushbest(stk_a, stk_b, la, 1);
+		ft_pushbest(stk_a, stk_b, 1);
 		la++;
 		lb--;
 	}

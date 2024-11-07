@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:14:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/07 21:38:58 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/07 22:06:02 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,34 +66,37 @@ int	ft_getmoves(t_stack *stk, t_stack *fastest)
 	return (idx);
 }
 
-void	ft_align(t_stack **stk, int size, t_stack *fastest)
-{
-	int	pos;
-
-	pos = ft_getmoves(*stk, fastest);
-	if (pos <= size / 2)
-	{
-		while (pos--)
-			ft_rotate(stk, RA);
-	}
-	else if (pos > size / 2)
-	{
-		while (size - pos++)
-			ft_reverserotate(stk, RRA);
-	}
-}
-
 void	ft_align_em(t_stack **a, t_stack **b, int pos_a, int pos_b)
 {
+	int	s_a;
+	int	s_b;
 
+	s_a = ft_lstsize_stknode(*a);
+	s_b = ft_lstsize_stknode(*b);
+	if (pos_a <= s_a / 2 && pos_b <= s_b / 2)
+	{
+		while (pos_a-- && pos_b--)
+			ft_rotate_both(a, b);
+		while (pos_a--)
+			ft_rotate(a, RA);
+		while (pos_b--)
+			ft_rotate(b, RB);
+	}
+	else if (pos_a > s_a / 2 && pos_b > s_b / 2)
+	{
+		while (s_a - pos_a++ && s_b - pos_b++)
+			ft_reverserotate_both(a, b);
+		while (s_a - pos_a++)
+			ft_reverserotate(a, RRA);
+		while (s_b - pos_b++)
+			ft_reverserotate(b, RRB);
+	}
 }
 
-// void	ft_align_em(t_stack **a, t_stack **b, )
-void	ft_pushbest(t_stack **a, t_stack **b, int lena, int d)
+void	ft_pushbest(t_stack **a, t_stack **b, int d)
 {
 	int		pos_a;
 	int		pos_b;
-	// int		lenb;
 	t_stack	*stk;
 
 	stk = NULL;
@@ -101,18 +104,14 @@ void	ft_pushbest(t_stack **a, t_stack **b, int lena, int d)
 	{
 		pos_a = ft_getmoves(*a, stk);
 		ft_align_em(a, NULL, pos_a, 0);
-		// ft_align(a, lena, stk);
 		ft_push(a, b, PB);
 	}
 	else if (d == 1)
 	{
-		// lenb = ft_lstsize_stknode(*b);
 		stk = ft_lstfindfastest(*b);
 		pos_a = ft_getmoves(*a, stk);
 		pos_b = ft_getmoves(*b, stk);
 		ft_align_em(a, b, pos_a, pos_b);
-		// ft_align(b, lenb, stk);
-		// ft_align(a, lena, stk->pair);
 		ft_push(b, a, PA);
 	}
 }
