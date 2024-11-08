@@ -6,20 +6,23 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:46:29 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 15:43:58 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 16:55:54 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstiter_stknode(t_stack *lst, void (*f)(t_stack *))
+void	ft_lstiter_stknode(t_stack **lst, void (*f)(t_stack *))
 {
-	if (!lst || !f)
+	t_stack	*tmp;
+
+	if (!lst || !*lst || !f)
 		return ;
-	while (lst)
+	tmp = *lst;
+	while (tmp)
 	{
-		(*f)(lst);
-		lst = lst->next;
+		(*f)(tmp);
+		tmp = tmp->next;
 	}
 }
 

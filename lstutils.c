@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:25:33 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/04 16:04:30 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 13:55:56 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ void	ft_lstadd_front_stknode(t_stack **lst, t_stack *node)
 	*lst = node;
 }
 
-int	ft_lstsize_stknode(t_stack *lst)
+int	ft_lstsize_stknode(t_stack **lst)
 {
-	int	i;
+	int		i;
+	t_stack	*tmp;
 
 	i = 0;
-	while (lst)
+	tmp = *lst;
+	while (tmp)
 	{
-		lst = lst->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);

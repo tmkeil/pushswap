@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/07 22:05:17 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 18:13:00 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 static void	ft_movechunk(t_stack **stk_a, t_stack **stk_b, int pivot, int la)
 {
+	int	stack_pivot;
+
 	while (ft_rate(*stk_a, pivot, la, true) && la > 3)
 	{
 		ft_pushbest(stk_a, stk_b, 0);
 		if (!stk_b || !*stk_b)
 			return ;
-		if ((*stk_b)->next && (*stk_b)->val < (*stk_b)->next->val)
+		stack_pivot = (int)(0.5 * pivot);
+		if (*stk_b && (*stk_b)->val < stack_pivot)
 			ft_rotate(stk_b, RB);
 		la--;
 	}
@@ -36,7 +39,7 @@ static void	ft_returnchunks(t_stack **stk_a, t_stack **stk_b, int la, int lb)
 	}
 }
 
-static void	ft_finalsort(t_stack **stk, int size)
+void	ft_finalsort(t_stack **stk, int size)
 {
 	int		val;
 	int		pos;
@@ -65,23 +68,21 @@ static void	ft_finalsort(t_stack **stk, int size)
 		ft_reverserotate(stk, RRA);
 }
 
-void	ft_longsort(t_stack **stk_a, t_stack **stk_b)
+void	ft_longsort(t_stack **stk_a, t_stack **stk_b, int size)
 {
 	int	pivot;
-	int	size_start;
 	int	size_curr;
 
 	if (!stk_a || !*stk_a)
 		return ;
-	size_start = ft_lstsize_stknode(*stk_a);
-	size_curr = size_start;
+	size_curr = ft_lstsize_stknode(stk_a);
 	while (size_curr > 3)
 	{
-		pivot = ft_convertpivot(*stk_a, size_start, size_curr);
+		pivot = ft_convertpivot(stk_a, size, size_curr);
 		ft_movechunk(stk_a, stk_b, pivot, size_curr);
-		size_curr = ft_lstsize_stknode(*stk_a);
+		size_curr = ft_lstsize_stknode(stk_a);
 	}
 	ft_shortsort(stk_a);
-	ft_returnchunks(stk_a, stk_b, size_curr, size_start - size_curr);
-	ft_finalsort(stk_a, size_start);
+	ft_returnchunks(stk_a, stk_b, size_curr, size - size_curr);
+	ft_finalsort(stk_a, size);
 }

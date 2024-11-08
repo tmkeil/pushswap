@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:41:15 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 15:46:51 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 16:50:17 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,16 @@ int	ft_getpivot(t_stack *stack, int idx, int n)
 	return (free(values), pivot);
 }
 
-int	ft_convertpivot(t_stack *stk, int size, int n)
+int	ft_convertpivot(t_stack **stk, int size, int n)
 {
 	double	m;
 	int		pivot_idx;
 
+	if (!stk || !*stk)
+		return (0);
 	m = (double)(PIVOT_END_POINT - PIVOT_POINT) / (size - 3);
 	pivot_idx = (int)(n * (PIVOT_POINT + m * (size - n)));
 	if (pivot_idx == 0)
 		pivot_idx = 2 * (n / 3);
-	return (ft_getpivot(stk, pivot_idx, n));
+	return (ft_getpivot(*stk, pivot_idx, n));
 }

@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/07 22:04:47 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 17:21:29 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define PIVOT_POINT 0.7
-# define PIVOT_END_POINT 0.5
+# define PIVOT_POINT 0.66
+# define PIVOT_END_POINT 0.66
 # define SA "sa"
 # define RA "ra"
 # define RRA "rra"
@@ -68,24 +68,25 @@ int					ft_sorted(t_stack *stack);
 
 // pivots
 int					ft_getpivot(t_stack *stack, int idx, int size);
-int					ft_convertpivot(t_stack *stk, int size, int n);
+int					ft_convertpivot(t_stack **stk, int size, int n);
 
 // lstutils
 t_stack				*ft_lstlast_stknode(t_stack *lst);
 t_stack				*ft_lstnew_stknode(int val);
 void				ft_lstadd_back_stknode(t_stack **lst, t_stack *node);
 void				ft_lstadd_front_stknode(t_stack **lst, t_stack *node);
-int					ft_lstsize_stknode(t_stack *lst);
-void				ft_lstiter_stknode(t_stack *lst, void (*f)(t_stack *));
+int					ft_lstsize_stknode(t_stack **lst);
+void				ft_lstiter_stknode(t_stack **lst, void (*f)(t_stack *));
 void				ft_lstclear_stknode(t_stack **lst);
 t_stack				*ft_lstfindfastest(t_stack *stk);
 t_stack				*ft_lstextreme(t_stack *stk, int hilo);
 
 // sorting
 void				ft_shortsort(t_stack **stack_a);
-void				ft_longsort(t_stack **stk_a, t_stack **stk_b);
-int					ft_getmoves(t_stack *stk, t_stack *fastest);
+void				ft_longsort(t_stack **stk_a, t_stack **stk_b, int size);
 int					ft_rate(t_stack *stk, int pivot, int size, bool back);
 void				ft_pushbest(t_stack **a, t_stack **b, int d);
 void				ft_pairs(t_stack *stk_a, t_stack *stk_b);
+void				ft_align(t_stack **a, t_stack **b, t_stack *best);
+void				ft_finalsort(t_stack **stk, int size);
 #endif

@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:52:41 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/06 16:48:30 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 18:16:27 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	ft_preparation(int argc, char **argv, t_stack **stack)
 
 	str = NULL;
 	str2 = NULL;
+	if (!argv[1][0])
+		return (0);
 	if (argc == 2)
 	{
 		str = ft_split(argv[1], ' ');
@@ -74,9 +76,9 @@ int	ft_preparation(int argc, char **argv, t_stack **stack)
 	else if (argc > 2)
 		str = argv + 1;
 	if (!str)
-		return (ft_ptrclr(str2, del), ft_er(), 0);
+		return (ft_ptrclr(str2, del), 0);
 	if (!ft_fill_values(str, stack))
-		return (ft_ptrclr(str2, del), ft_er(), 0);
+		return (ft_ptrclr(str2, del), 0);
 	if (!ft_rulecheck(*stack))
 		return (ft_lstclear_stknode(stack), ft_ptrclr(str2, del), 0);
 	return (ft_ptrclr(str2, del), 1);
