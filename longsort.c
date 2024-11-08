@@ -6,11 +6,29 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:15:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/08 18:13:00 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 19:42:07 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	ft_pushbest(t_stack **a, t_stack **b, int d)
+{
+	t_stack	*stk;
+
+	stk = NULL;
+	if (d == 0)
+	{
+		ft_align(a, b, stk);
+		ft_push(a, b, PB);
+	}
+	else if (d == 1)
+	{
+		stk = ft_lstfindfastest(*b);
+		ft_align(a, b, stk);
+		ft_push(b, a, PA);
+	}
+}
 
 static void	ft_movechunk(t_stack **stk_a, t_stack **stk_b, int pivot, int la)
 {

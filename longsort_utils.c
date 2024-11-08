@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:14:44 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/08 18:13:19 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 19:41:42 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,6 @@ int	ft_rate(t_stack *stk, int pivot, int size, bool back)
 		stk = stk->next;
 	}
 	return (exists);
-}
-
-void	ft_pushbest(t_stack **a, t_stack **b, int d)
-{
-	t_stack	*stk;
-
-	stk = NULL;
-	if (d == 0)
-	{
-		ft_align(a, b, stk);
-		ft_push(a, b, PB);
-	}
-	else if (d == 1)
-	{
-		stk = ft_lstfindfastest(*b);
-		ft_align(a, b, stk);
-		ft_push(b, a, PA);
-	}
 }
 
 void	ft_pairs(t_stack *stk_a, t_stack *stk_b)

@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:41:15 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/08 16:50:17 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 19:54:52 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_sort(int *arr, int size, int (*f)(int, int))
 	}
 }
 
-int	ft_getpivot(t_stack *stack, int idx, int n)
+static int	ft_getpivot(t_stack *stack, int idx, int n)
 {
 	int		pivot;
 	int		*values;

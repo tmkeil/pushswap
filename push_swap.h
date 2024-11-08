@@ -6,7 +6,7 @@
 /*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/08 17:21:29 by tkeil            ###   ########.fr       */
+/*   Updated: 2024/11/08 19:56:21 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ void				ft_reverserotate_both(t_stack **a, t_stack **b);
 
 // termination utils
 void				del(void *content);
-void				f(t_stack *stk);
 void				ft_er(void);
 long				ft_atol(char *s);
+
+// numbers utils
 char				*ft_itoa_node(int val);
 void				ft_ptrclr(char **ptr, void (*del)(void *));
 
@@ -67,7 +68,6 @@ int					ft_preparation(int argc, char **argv, t_stack **stack);
 int					ft_sorted(t_stack *stack);
 
 // pivots
-int					ft_getpivot(t_stack *stack, int idx, int size);
 int					ft_convertpivot(t_stack **stk, int size, int n);
 
 // lstutils
@@ -76,7 +76,6 @@ t_stack				*ft_lstnew_stknode(int val);
 void				ft_lstadd_back_stknode(t_stack **lst, t_stack *node);
 void				ft_lstadd_front_stknode(t_stack **lst, t_stack *node);
 int					ft_lstsize_stknode(t_stack **lst);
-void				ft_lstiter_stknode(t_stack **lst, void (*f)(t_stack *));
 void				ft_lstclear_stknode(t_stack **lst);
 t_stack				*ft_lstfindfastest(t_stack *stk);
 t_stack				*ft_lstextreme(t_stack *stk, int hilo);
@@ -85,7 +84,6 @@ t_stack				*ft_lstextreme(t_stack *stk, int hilo);
 void				ft_shortsort(t_stack **stack_a);
 void				ft_longsort(t_stack **stk_a, t_stack **stk_b, int size);
 int					ft_rate(t_stack *stk, int pivot, int size, bool back);
-void				ft_pushbest(t_stack **a, t_stack **b, int d);
 void				ft_pairs(t_stack *stk_a, t_stack *stk_b);
 void				ft_align(t_stack **a, t_stack **b, t_stack *best);
 void				ft_finalsort(t_stack **stk, int size);
