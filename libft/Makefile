@@ -1,6 +1,10 @@
 # Compiler and Flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+SRCSDIR = srcs/
+BONUSDIR = bonus/
+OBJSDIR = objs/
+INCLUDES = -I../headers
 
 # MANDATORY files
 MANDATORY_SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
@@ -13,8 +17,11 @@ MANDATORY_SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_i
 BONUS_SRCS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 				ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+SRCS_MANDATORY_PATHS = $(addprefix $(SRCSDIR), $(MANDATORY_SRCS))
+SRCS_BONUS_PATHS = $(addprefix $(BONUSDIR), $(BONUS_SRCS))
+
+MANDATORY_OBJS = $(addprefix $(OBJSDIR), $(MANDATORY_SRCS:.c=.o))
+BONUS_OBJS = $(addprefix $(OBJSDIR), $(BONUS_SRCS:.c=.o))
 
 # Library name
 NAME = libft.a
@@ -26,9 +33,15 @@ all: $(NAME)
 $(NAME): $(MANDATORY_OBJS)
 		ar -rcs $@ $^
 
-# Rule to compile .c files to .o files
-%.o: %.c
-		$(CC) $(CFLAGS) -c $< -o $@
+# Rule to compile mandatory .c files to .o files
+$(OBJSDIR)%.o: $(SRCSDIR)%.c
+		mkdir -p $(OBJSDIR)
+		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+# Rule to compile bonus .c files to .o files
+$(OBJSDIR)%.o: $(BONUSDIR)%.c
+		mkdir -p $(OBJSDIR)
+		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # Rule to create the bonus library
 bonus: $(BONUS_OBJS) $(MANDATORY_OBJS)
