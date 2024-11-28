@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
@@ -7,6 +7,7 @@ OBJSDIR = objs/
 SRCSDIR = srcs/
 LIBFTDIR = libft/
 LIBFT = libft/libft.a
+
 SRCS = push_swap.c validations.c termination.c pivots.c operations.c operate_both.c \
 		nbr_utils.c lst_utils.c lst_utils2.c longsort.c longsort_utils.c align.c
 
@@ -32,6 +33,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	make -C $(LIBFTDIR) fclean
+
+re: fclean all
 
 .PHONY: all clean fclean
 

@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCSDIR = srcs/
 BONUSDIR = bonus/
 OBJSDIR = objs/
+GNLDIR = get_next_line/
 INCLUDES = -I../headers
 
 # MANDATORY files
@@ -17,11 +18,15 @@ MANDATORY_SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_i
 BONUS_SRCS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 				ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
+GNL_SRCS = get_next_line.c get_next_line_utils.c
+
 SRCS_MANDATORY_PATHS = $(addprefix $(SRCSDIR), $(MANDATORY_SRCS))
 SRCS_BONUS_PATHS = $(addprefix $(BONUSDIR), $(BONUS_SRCS))
+SRCS_GNL_PATHS = $(addprefix $(GNLDIR), $(GNL_SRCS))
 
 MANDATORY_OBJS = $(addprefix $(OBJSDIR), $(MANDATORY_SRCS:.c=.o))
 BONUS_OBJS = $(addprefix $(OBJSDIR), $(BONUS_SRCS:.c=.o))
+GNL_OBJS = $(addprefix $(OBJSDIR), $(GNL_SRCS:.c=.o))
 
 # Library name
 NAME = libft.a
@@ -30,7 +35,7 @@ NAME = libft.a
 all: $(NAME)
 
 # Rule to create the library
-$(NAME): $(MANDATORY_OBJS)
+$(NAME): $(MANDATORY_OBJS) $(GNL_OBJS)
 		ar -rcs $@ $^
 
 # Rule to compile mandatory .c files to .o files
@@ -43,13 +48,21 @@ $(OBJSDIR)%.o: $(BONUSDIR)%.c
 		mkdir -p $(OBJSDIR)
 		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+# Rule to compile gnl .c files to .o files
+$(OBJSDIR)%.o: $(GNLDIR)%.c
+		mkdir -p $(OBJSDIR)
+		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJSDIR):
+		mkdir -p $(OBJSDIR)
+
 # Rule to create the bonus library
-bonus: $(BONUS_OBJS) $(MANDATORY_OBJS)
-		ar -rcs $(NAME) $(BONUS_OBJS) $(MANDATORY_OBJS)
+bonus: $(OBJSDIR) $(BONUS_OBJS) $(MANDATORY_OBJS) $(GNL_OBJS)
+		ar -rcs $(NAME) $(BONUS_OBJS) $(MANDATORY_OBJS) $(GNL_OBJS)
 
 # Rule to clean up object files
 clean:
-		rm -f $(MANDATORY_OBJS) $(BONUS_OBJS)
+		rm -rf $(OBJSDIR)
 
 # Rule to clean up object files and the library
 fclean: clean
