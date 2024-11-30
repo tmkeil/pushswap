@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tobke <tobke@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:42:25 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/28 13:12:35 by tobke            ###   ########.fr       */
+/*   Updated: 2024/11/30 16:39:44 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ int					ft_rate(t_stack *stk, int pivot, int size, bool back);
 void				ft_pairs(t_stack *stk_a, t_stack *stk_b);
 void				ft_align(t_stack **a, t_stack **b, t_stack *best);
 void				ft_finalsort(t_stack **stk, int size);
+
 #endif

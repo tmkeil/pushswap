@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tobke <tobke@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:43:13 by tkeil             #+#    #+#             */
-/*   Updated: 2024/11/28 13:07:45 by tobke            ###   ########.fr       */
+/*   Updated: 2024/11/30 16:35:44 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ int	main(int argc, char *argv[])
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-	{
-		ft_er();
-		exit(EXIT_FAILURE);
-	}
+		return (1);
 	if (!ft_preparation(argc, argv, &stack_a))
 	{
 		ft_er();

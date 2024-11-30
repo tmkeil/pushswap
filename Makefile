@@ -32,7 +32,7 @@ $(CHECKER): $(LIBFT) $(OBJS_CHECKER)
 	$(CC) $(CFLAGS) $(OBJS_CHECKER) $(LIBFT) $(INCLUDES) -o $@
 
 $(OBJSDIR)%.o: $(SRCSDIR)%.c
-	@mkdir -p $(OBJSDIR)
+	mkdir -p $(OBJSDIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
@@ -49,5 +49,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
-
-.SILENT:

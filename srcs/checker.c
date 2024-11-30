@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tobke <tobke@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkeil <tkeil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:11:17 by tobke             #+#    #+#             */
-/*   Updated: 2024/11/28 23:31:11 by tobke            ###   ########.fr       */
+/*   Updated: 2024/11/30 16:38:22 by tkeil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_is_sorted(t_stack *stack)
+int	ft_is_sorted(t_stack *stack)
 {
 	while (stack->next)
 	{
@@ -47,11 +47,11 @@ int	ft_operations(t_stack **a, t_stack **b, char *operation)
 		return (ft_rotate_both(a, b), 1);
 	else if (!ft_strncmp(operation, RRR, 3))
 		return (ft_reverserotate_both(a, b), 1);
-    else
-        return (0);
+	else
+		return (0);
 }
 
-void    ft_checker(t_stack *a, t_stack *b)
+void	ft_checker(t_stack *a, t_stack *b)
 {
 	if (ft_is_sorted(a) && !b)
 		write(1, "OK\n", 3);
@@ -68,24 +68,24 @@ int	main(int argc, char **argv)
 	char	*operation;
 
 	if (argc < 2)
-		return (0);
+		return (1);
 	a = NULL;
 	b = NULL;
 	if (!ft_preparation(argc, argv, &a))
 		return (ft_er(), 1);
 	while (1)
 	{
-        operation = get_next_line(STDIN_FILENO);
-        if (!operation)
-            break ;
+		operation = get_next_line(STDIN_FILENO);
+		if (!operation)
+			break ;
 		if (!ft_operations(&a, &b, operation))
-        {
-            ft_lstclear_stknode(&a);
-            ft_lstclear_stknode(&b);
-            return (ft_er(), 1);
-        }
+		{
+			ft_lstclear_stknode(&a);
+			ft_lstclear_stknode(&b);
+			return (ft_er(), 1);
+		}
 		free(operation);
 	}
-    ft_checker(a, b);
+	ft_checker(a, b);
 	return (0);
 }
