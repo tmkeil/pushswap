@@ -18,6 +18,23 @@ Sort a list of integers using as few operations as possible. The rules:
 
 ---
 
+## 🔁 Allowed Operations
+
+- `sa`: Swap the first two elements at the top of stack `a`
+- `sb`: Swap the first two elements at the top of stack `b`
+- `ss`: Perform `sa` and `sb` at the same time
+- `pa`: Push the top element of `b` onto `a`
+- `pb`: Push the top element of `a` onto `b`
+- `ra`: Rotate `a` upwards (first element becomes last)
+- `rb`: Rotate `b` upwards
+- `rr`: Perform `ra` and `rb` at the same time
+- `rra`: Reverse rotate `a` (last element becomes first)
+- `rrb`: Reverse rotate `b`
+- `rrr`: Perform `rra` and `rrb` at the same time
+
+---
+
+
 ## My Implementation
 
 I decided **not to use Radix Sort**. I think it causes too many operations in this specific case. You have to check **every bit**, starting from the **least significant**, and that means lots of pushes and rotations here.
